@@ -11,16 +11,16 @@ form {
 
 .message-catcher {
     border:solid 2pt blue;
-    /* width:60%; */
+    width:45%;
     height:43vh;
-    margin:10px;
+    margin:1px;
 }
 
 .users-list {
     border:solid 2pt purple;
-    /* width:340px; */
+    width:45%;
     height:43vh;
-    margin:10px;
+    margin:1px;
     padding:0;
 }
 

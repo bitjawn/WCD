@@ -42,27 +42,8 @@
     margin:0;
 }
 
-.map {
-    margin:10px;
-}
-
-.contact-address {
-    font-family: cursive,  "Comic Sans MS", sans-serif;
-    font-weight:500;
-    font-size:14pt;
-    word-spacing:-2px;
-    line-height:2%px;
-    margin:10px;
-}
-
-.sign-in,
-.sign-up {
-    margin-top:2px;
-}
-
-.sign-in .child,
-.sign-up .child {
-    padding:30px;
+.message-area {
+    
 }
 
 .close-button {
@@ -149,43 +130,10 @@ li {
     .left-floater,
     .right-floater,
     .center-floater {
+            display:block;
             margin:auto;
             text-align:center;
             width:100%;
         }
     
-    img[class="logo"] {
-            border:solid 1pt rgb(200,200,210);
-            width:555px;
-            height:355px;
-            padding:0px;
-            margin:0px;
-        }
-    
-    .card-section>p {
-            /* border:solid 1pt rgb(200,200,210); */
-            width:100%;
-            margin:0px;            
-            padding:0;
-        }
-
-    .card {
-            border:solid 1pt rgb(200,200,210);
-            width:400px;
-            margin:10px;            
-            padding:0;
-        }
-
-    .map,
-    .right-floater form,
-    .left-floater * {
-            margin:0;
-            padding:5px;
-            width:100%;
-            height:25;
-        }
-
-    .left-floater p {
-            text-align:center;
-        }
 }
