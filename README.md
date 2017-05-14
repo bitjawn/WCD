@@ -5,6 +5,7 @@
 <ul>
     <li>NodeJS: 7.7.4</li>
     <li>NPM: 4.5.0</li>       
+    <li>Express: 4.14.0</li>      
     <li>Foundation: 6.3.1</li>
     <li>Nodemon: 1.11.0</li>
     <li>Socket.io: 1.7.2</li>
