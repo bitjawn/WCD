@@ -2,7 +2,6 @@
 
 <p>Cloned from <a href="https://github.com/quauab/WebChatDemoApp.git">original project</a>, this version uses Foundation front-end.</p>
 
-
 <ul>
     <li>NodeJS: 7.7.4</li>
     <li>NPM: 4.5.0</li>       
