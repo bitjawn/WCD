@@ -15,7 +15,7 @@
 
 ```bash
 # Installation
- clone https://github.com/quobod/WebChat.git
+ clone https://github.com/bitjawn/WCD.git or download the zip
  
  npm install
  
