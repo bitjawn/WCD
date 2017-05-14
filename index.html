@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" href="graphics/favicon.ico" type="image/x-icon" />     
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="graphics/favicon.ico" type="image/x-icon" />     
         <script src="https://use.fontawesome.com/fc14e58e15.js"></script>
         <link rel="stylesheet" href="/css/foundation.css">
         <link rel="stylesheet" href="/css/app.css">
         <link rel="stylesheet" href="/css/icons/foundation-icons.css">
-		<script src="/socket.io/socket.io.js"></script>
-		<title>Chat Demo</title>
-	</head>
-	<body>        
+        <script src="/socket.io/socket.io.js"></script>
+        <title>Chat Demo</title>
+    </head>
+    <body>        
         <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
             <button class="menu-icon" type="button" data-toggle="main-menu"></button>
             <div class="title-bar-title">Menu</div>
@@ -37,7 +37,7 @@
             <h5 class="server-message-title"></h5>
             <div id="server-message-body" class="server-message-body small-12 medium-12 large-12 columns"></div>
         </div>
-        
+
         <div class="row">
             <div id="message-area" class="message-area">
                 <div id="users-list" class="users-list float-left v-scroll row small-4 medium-4 large-4 columns">
@@ -128,209 +128,209 @@
                 </div>
             </div>
         </div>
-	</body>   
-        <script src="/js/vendor/jquery.js"></script> 
-        <script src="/js/vendor/what-input.js"></script>
-        <script src="/js/vendor/foundation.js"></script>
-        <script src="/js/app.js"></script> 
-        <script>
-            $('#logout-anchor').hide();
-            $('#message-area').hide();     
-            $('.menu-title').html('Dashboard');
+    </body>   
+    <script src="/js/vendor/jquery.js"></script> 
+    <script src="/js/vendor/what-input.js"></script>
+    <script src="/js/vendor/foundation.js"></script>
+    <script src="/js/app.js"></script> 
+    <script>
+        $('#logout-anchor').hide();
+        $('#message-area').hide();     
+        $('.menu-title').html('Dashboard');
 
-            $(function(){       
-                var socket = io.connect();
-                var $messageDiv = $('#message-div'); 
-                
-                // logging in
-                var $userLoginForm = $('#userLoginForm');
-                var $userLogin = $('#login-anchor');
-                var $userLogout = $('#logout-anchor');
-                var $username = $('#username');
-                var $password = $('#pwd');
-                var $messageArea = $('#message-area');
+        $(function(){       
+            var socket = io.connect();
+            var $messageDiv = $('#message-div'); 
+            
+            // logging in
+            var $userLoginForm = $('#userLoginForm');
+            var $userLogin = $('#login-anchor');
+            var $userLogout = $('#logout-anchor');
+            var $username = $('#username');
+            var $password = $('#pwd');
+            var $messageArea = $('#message-area');
 
-                $userLoginForm.submit(function(e){
-                    e.preventDefault();
-                    socket.emit('login', {username:$username.val(),pwd:$password.val()}, function(data){
-                        if (data.success) {
-                            $messageArea.show();
-                            $userLogin.hide();
-                            $userLogout.show();     
-                            $('.menu-title').html(cfc(data.username));
-                            logSuccess()
-                        } else {
-                          logError(data);
-                        }
-                    });
-                    $username.val('');
-                    $password.val('');
-                    $('#login-anchor').trigger('click');
-                });
-                  
-                // logging out
-                $userLogout.on('mouseup', function(){
-                    socket.emit('log out');
-                    $userLogin.show();
-                    $userLogout.hide();
-                    $('#message-area').hide();
-                    removeElements(element('chat'));
-                    $('.menu-title').html('Dashboard');
-                });
-                
-                // registration
-                var $registerUser = $('#registerUser');
-                var $reg = $('#register-anchor');
-                var $rname = $('#registername');
-                var $remail = $('#registeremail');
-                var $rpwd1 = $('#registerpwd1');
-                var $rpwd2 = $('#registerpwd2');
-                var $regBtn = $('#regButton');                
-                
-                $registerUser.submit(function(e){
-                    e.preventDefault();
-                    socket.emit('sign up', {username:$rname.val(), email:$remail.val(), pwd1:$rpwd1.val(), pwd2:$rpwd2.val()},function(data){
-                        if (data.success) {
-                            $rname.val('');
-                            $remail.val('');
-                            $rpwd1.val('');
-                            $rpwd2.val('');
-                            $reg.hide();
-                            regSuccess();
-                        } else {
-                            regError(data);                          
-                        }
-                    });
-                    $('.reg-close').trigger('click');
-                });
-
-                // Sending messages to a user
-                var $messageForm = $('.messageForm');
-                var $userId = $('#userid');
-                var $message = $('#themessage');
-                var $chat = $('#chat');
-
-                $messageForm.submit(function(e){
-                    e.preventDefault();
-                    if ($message.val() && $userId.val()) {
-                        socket.emit('specific', {user:$userId.val(),message:$message.val()});
-                    } else if ($message.val() && !$userId.val()) {
-                        socket.emit('send message', {user:socket.id,message:$message.val()});
+            $userLoginForm.submit(function(e){
+                e.preventDefault();
+                socket.emit('login', {username:$username.val(),pwd:$password.val()}, function(data){
+                    if (data.success) {
+                        $messageArea.show();
+                        $userLogin.hide();
+                        $userLogout.show();     
+                        $('.menu-title').html(cfc(data.username));
+                        logSuccess()
+                    } else {
+                      logError(data);
                     }
-                    
-                    $message.val('');
-                    $userId.val('');
                 });
+                $username.val('');
+                $password.val('');
+                $('#login-anchor').trigger('click');
+            });
+              
+            // logging out
+            $userLogout.on('mouseup', function(){
+                socket.emit('log out');
+                $userLogin.show();
+                $userLogout.hide();
+                $('#message-area').hide();
+                removeElements(element('chat'));
+                $('.menu-title').html('Dashboard');
+            });
+            
+            // registration
+            var $registerUser = $('#registerUser');
+            var $reg = $('#register-anchor');
+            var $rname = $('#registername');
+            var $remail = $('#registeremail');
+            var $rpwd1 = $('#registerpwd1');
+            var $rpwd2 = $('#registerpwd2');
+            var $regBtn = $('#regButton');                
+            
+            $registerUser.submit(function(e){
+                e.preventDefault();
+                socket.emit('sign up', {username:$rname.val(), email:$remail.val(), pwd1:$rpwd1.val(), pwd2:$rpwd2.val()},function(data){
+                    if (data.success) {
+                        $rname.val('');
+                        $remail.val('');
+                        $rpwd1.val('');
+                        $rpwd2.val('');
+                        $reg.hide();
+                        regSuccess();
+                    } else {
+                        regError(data);                          
+                    }
+                });
+                $('.reg-close').trigger('click');
+            });
 
-                socket.on('new message', function(data){
-                    $chat.append('<div class="row new-message"><strong>' + data.user + '</strong>: ' + data.msg + '</div>');
-                });
+            // Sending messages to a user
+            var $messageForm = $('.messageForm');
+            var $userId = $('#userid');
+            var $message = $('#themessage');
+            var $chat = $('#chat');
 
-                // Update users list
-                var $users = $('#user-list');
-                socket.on('get users', function(data){
-                    var html = '';
-                    
-                    for (var i = 0; i < data.length; i++) {             
-                        html += '<li title="' + data[i].id +
-                                '" ><span class="specific-user" data-id="' + data[i].id + 
-                                '"><i class="fa fa-user" aria-hidden="true" style="font-size:16pt;font-weight:heavier;"></i><i class="space">i</i>' + cfc(data[i].username) + '</span></li>';
-                    }        
-                    
-                    $users.html(html);
-                    $('.specific-user').click(function(){
-                        if ($(this).data('id') !== socket.id) {
-                            $('#userid').val($(this).data('id'));
-                        }                    
-                    });
-                });
+            $messageForm.submit(function(e){
+                e.preventDefault();
+                if ($message.val() && $userId.val()) {
+                    socket.emit('specific', {user:$userId.val(),message:$message.val()});
+                } else if ($message.val() && !$userId.val()) {
+                    socket.emit('send message', {user:socket.id,message:$message.val()});
+                }
                 
-                // Server broadcast
-                socket.on('receive server message', function(data){
-                                    
-                    var $broadcast = '<div class="' + data.level + ' callout server-information-message">' +
-                                '<h4>From ' + data.from + '</h4>' +
-                                '<p><strong>' + data.message + '</strong></p></div>';      
-                    $('.server-message-title').html('<h3 style="text-align:center;">Important Message</h3>');
-                    $('#server-message-body').html($broadcast);
-                    $('.server-message-div').removeClass('hide');
-                    
-                });
+                $message.val('');
+                $userId.val('');
+            });
+
+            socket.on('new message', function(data){
+                $chat.append('<div class="row new-message"><strong>' + data.user + '</strong>: ' + data.msg + '</div>');
+            });
+
+            // Update users list
+            var $users = $('#user-list');
+            socket.on('get users', function(data){
+                var html = '';
                 
-                // From server
-                socket.on('receive specific message',function(data){
-                    $chat.append('<div class="row newMessage"><strong>From ' + data.from + '</strong>&nbsp;' + data.message + '</div>');
-                });
+                for (var i = 0; i < data.length; i++) {             
+                    html += '<li title="' + data[i].id +
+                            '" ><span class="specific-user" data-id="' + data[i].id + 
+                            '"><i class="fa fa-user" aria-hidden="true" style="font-size:16pt;font-weight:heavier;"></i><i class="space">i</i>' + cfc(data[i].username) + '</span></li>';
+                }        
                 
-                // remotely log out user
-                socket.on('log me out', function(data){
-                    socket.emit('log out');
-                    $userLogin.show();
-                    $userLogout.hide();
-                    $('#message-area').hide();
-                    removeElements(element('chat'));
-                    $('.menu-title').html('Dashboard');
+                $users.html(html);
+                $('.specific-user').click(function(){
+                    if ($(this).data('id') !== socket.id) {
+                        $('#userid').val($(this).data('id'));
+                    }                    
                 });
+            });
+            
+            // Server broadcast
+            socket.on('receive server message', function(data){
+                                
+                var $broadcast = '<div class="' + data.level + ' callout server-information-message">' +
+                            '<h4>From ' + data.from + '</h4>' +
+                            '<p><strong>' + data.message + '</strong></p></div>';      
+                $('.server-message-title').html('<h3 style="text-align:center;">Important Message</h3>');
+                $('#server-message-body').html($broadcast);
+                $('.server-message-div').removeClass('hide');
                 
-                // remotely disconnect user
-                socket.on('disconnect me', function(data){
-                    window.open('http://google.com', '_top');
-                });            
-            });    
+            });
             
-            // registration error handler
-            function regError(data) {
-                var error = '<div class="alert callout reg-error">' +
-                                '<h4>Error Details</h4>' +
-                                '<p><strong>' + data.error + '</strong></p></div>'; 
-                $('.server-message-title').html('<h3 style="text-align:center;">Registration Error</h3>');
-                $('#server-message-body').html(error);   
-                $('.server-message-div').removeClass('hide');
-                $('.close-button').on('click', function(){
-                    $('.server-message-div').addClass('hide');
-                });
-            }
+            // From server
+            socket.on('receive specific message',function(data){
+                $chat.append('<div class="row newMessage"><strong>From ' + data.from + '</strong>&nbsp;' + data.message + '</div>');
+            });
             
-             // login error handler
-            function logError(data) {
-                var error = '<div class="alert callout log-error">' +
-                                '<h4>Error Details</h4>' +
-                                '<p><strong>' + data.error + '</strong></p></div>'; 
-                $('.server-message-title').html('<h3 style="text-align:center;">Login Error</h3>');
-                $('#server-message-body').html(error);  
-                $('.server-message-div').removeClass('hide');
-                $('.close-button').on('click', function(){
-                    $('.server-message-div').addClass('hide');
-                });
-            }
+            // remotely log out user
+            socket.on('log me out', function(data){
+                socket.emit('log out');
+                $userLogin.show();
+                $userLogout.hide();
+                $('#message-area').hide();
+                removeElements(element('chat'));
+                $('.menu-title').html('Dashboard');
+            });
             
-            // registration success handler
-            function regSuccess(msg = 'You are now able to sign in & out.') {
-                var success = '<div class="success callout reg-success">' +
-                                '<h4>Message Detail</h4>' +
-                                '<p><strong>' + msg + '</strong></p></div>'; 
-                $('.server-message-title').html('<h3 style="text-align:center;">Registration Successful</h3>');
-                $('#server-message-body').html(success);
-                $('.server-message-div').removeClass('hide');
-                $('.close-button').on('click', function(){
-                    $('.server-message-div').addClass('hide');
-                });
-            }
-            
-            // login success handler
-            function logSuccess(msg = 'You are now signed in.') {
-                var success = '<div class="success callout log-success">' +
-                                '<h4>Message Detail</h4>' +
-                                '<p><strong>' + msg + '</strong></p></div>'; 
-                $('.server-message-title').html('<h3 style="text-align:center;">Login Successful</h3>');
-                $('#server-message-body').html(success);
-                $('.server-message-div').removeClass('hide');
-                $('.close-button').on('click', function(){
-                    $('.server-message-div').addClass('hide');
-                });
-            }
-        </script>
-        <link rel="stylesheet" href="css/style.css" />
-        <script src="js/resources.js"></script>
-        <script src="js/start.js"></script>
+            // remotely disconnect user
+            socket.on('disconnect me', function(data){
+                window.open('http://google.com', '_top');
+            });            
+        });    
+        
+        // registration error handler
+        function regError(data) {
+            var error = '<div class="alert callout reg-error">' +
+                            '<h4>Error Details</h4>' +
+                            '<p><strong>' + data.error + '</strong></p></div>'; 
+            $('.server-message-title').html('<h3 style="text-align:center;">Registration Error</h3>');
+            $('#server-message-body').html(error);   
+            $('.server-message-div').removeClass('hide');
+            $('.close-button').on('click', function(){
+                $('.server-message-div').addClass('hide');
+            });
+        }
+        
+         // login error handler
+        function logError(data) {
+            var error = '<div class="alert callout log-error">' +
+                            '<h4>Error Details</h4>' +
+                            '<p><strong>' + data.error + '</strong></p></div>'; 
+            $('.server-message-title').html('<h3 style="text-align:center;">Login Error</h3>');
+            $('#server-message-body').html(error);  
+            $('.server-message-div').removeClass('hide');
+            $('.close-button').on('click', function(){
+                $('.server-message-div').addClass('hide');
+            });
+        }
+        
+        // registration success handler
+        function regSuccess(msg = 'You are now able to sign in & out.') {
+            var success = '<div class="success callout reg-success">' +
+                            '<h4>Message Detail</h4>' +
+                            '<p><strong>' + msg + '</strong></p></div>'; 
+            $('.server-message-title').html('<h3 style="text-align:center;">Registration Successful</h3>');
+            $('#server-message-body').html(success);
+            $('.server-message-div').removeClass('hide');
+            $('.close-button').on('click', function(){
+                $('.server-message-div').addClass('hide');
+            });
+        }
+        
+        // login success handler
+        function logSuccess(msg = 'You are now signed in.') {
+            var success = '<div class="success callout log-success">' +
+                            '<h4>Message Detail</h4>' +
+                            '<p><strong>' + msg + '</strong></p></div>'; 
+            $('.server-message-title').html('<h3 style="text-align:center;">Login Successful</h3>');
+            $('#server-message-body').html(success);
+            $('.server-message-div').removeClass('hide');
+            $('.close-button').on('click', function(){
+                $('.server-message-div').addClass('hide');
+            });
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/resources.js"></script>
+    <script src="js/start.js"></script>
 </html>
