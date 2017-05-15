@@ -43,15 +43,63 @@
 }
 
 .message-area {
-    
+    margin:10px;
+}
+
+.message-area > div {
+    margin:5px;
 }
 
 .close-button {
     margin:10px;
     margin-bottom:0;
     margin-right:0;
+    position:relative;
 }
 
+.space {
+    color:#fff;
+}
+
+.server-message-div {
+    margin:10px;
+    border:solid 1pt transparent;
+    border-radius:10px;
+    box-shadow: 10px 10px 5px rgb(200,190,150);
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.server-message {
+    margin:10px;
+    border:solid 1pt transparent;
+    border-radius:10px;
+    box-shadow: 10px 10px 5px rgb(200,190,150);
+    margin-left:auto;
+    margin-right:auto;
+    width:50%;
+}
+
+.server-message-close-button {
+    padding:10px;
+}
+
+.chat {
+    margin:10px;
+}
+
+.sign-in,
+.sign-up {
+    margin-top:5px;
+}
+
+.sign-in .child,
+.sign-up .child {
+    width:350px;
+    padding:10px;
+    margin-left:5px;
+    margin-right:5px;
+}
 
 iframe {
     width: 100%;
