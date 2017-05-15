@@ -135,6 +135,36 @@ li {
     background: transparent;
 }
 
+@media screen and (max-width: 480px) {
+    .left-floater,
+    .right-floater,
+    .center-floater {
+            float:none;
+            text-align: center;
+        }
+
+    .left-floater,
+    .right-floater,
+    .center-floater {
+            display:block;
+            margin:auto;
+            text-align:center;
+            width:100%;
+        }
+
+    .users-list,
+    .message-catcher {
+            margin:0px;
+            padding:10px;
+            width:100%;
+        }
+
+    .chat {
+            padding:0;
+            margin:0;
+        }
+}
+
 @media screen and (max-width: 520px) {
     .left-floater,
     .right-floater,
@@ -146,26 +176,22 @@ li {
     .left-floater,
     .right-floater,
     .center-floater {
+            display:block;
             margin:auto;
-            width:100%;
-        }
-
-    .thumbnail {
-            width:100%;
-            height:100%;
-        }
-    
-    .map,
-    .right-floater form,
-    .left-floater * {
-            margin:0;
-            padding:5px;
-            width:100%;
-            height:25;
-        }
-
-    .left-floater p {
             text-align:center;
+            width:100%;
+        }
+
+    .users-list,
+    .message-catcher {
+            margin:0px;
+            padding:10px;
+            width:100%;
+        }
+
+    .chat {
+            padding:0;
+            margin:0;
         }
 }
 
