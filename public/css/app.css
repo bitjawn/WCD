@@ -42,12 +42,14 @@
     margin:0;
 }
 
-.message-area {
+.users-list,
+.message-catcher {
     margin:10px;
 }
-
-.message-area > div {
-    margin:5px;
+    
+.chat {
+        padding:20px;
+    margin:10px;
 }
 
 .close-button {
@@ -84,8 +86,8 @@
     padding:10px;
 }
 
-.chat {
-    margin:10px;
+.new-message {
+    width:300px;
 }
 
 .sign-in,
@@ -183,5 +185,16 @@ li {
             text-align:center;
             width:100%;
         }
-    
+
+    .users-list,
+    .message-catcher {
+            margin:0px;
+            padding:10px;
+            width:100%;
+        }
+
+    .chat {
+            padding:0;
+            margin:0;
+        }
 }
